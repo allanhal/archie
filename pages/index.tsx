@@ -1,15 +1,19 @@
 import styles from "../styles/Home.module.css";
 import client from "../utils/apollo-client";
 import { GET_LAUNCHES } from "../utils/queries";
+import LaunchCard from "./card";
 
 export default function Home(props: any) {
   return (
     <div className={styles.container}>
-      {/* <span>{JSON.stringify(props.data)}</span> */}
       {props.data.map((launch: any) => (
         <div key={launch.mission_name}>
-          <span>Mission name: {launch.mission_name}</span>
-          {launch.details && <span>Details: {launch.details}</span>}
+          <LaunchCard
+            missionName={launch.mission_name}
+            details={launch.details}
+            imgs={launch.links.flickr_images}
+            date={launch.launch_date_local}
+          />
         </div>
       ))}
     </div>
