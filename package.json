@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.7.2",
+    "@chakra-ui/icons": "^2.0.13",
     "@chakra-ui/react": "^2.4.3",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
@@ -21,9 +22,13 @@
     "eslint-config-next": "13.0.6",
     "framer-motion": "^6",
     "graphql": "^16.6.0",
+    "lodash.debounce": "^4.0.8",
     "next": "13.0.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "typescript": "4.9.4"
+  },
+  "devDependencies": {
+    "@types/lodash.debounce": "^4.0.7"
   }
 }

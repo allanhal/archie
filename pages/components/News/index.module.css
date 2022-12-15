@@ -1,0 +1,26 @@
+.container {
+  position: fixed;
+  background-color: lightgray;
+  z-index: 1;
+  overflow: hidden;
+  width: 100%;
+  bottom: 0px;
+  height: 1.75rem;
+}
+
+.text {
+  font-size: large;
+  font-weight: 600;
+  white-space: nowrap;
+  transform: translateX(100%);
+  animation: scroll-effect 60s linear infinite;
+}
+
+@keyframes scroll-effect {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}

@@ -1,22 +1,39 @@
-import styles from "../styles/Home.module.css";
 import client from "../utils/apollo-client";
-import { GET_LAUNCHES } from "../utils/queries";
-import LaunchCard from "./card";
+import { GET_LAUNCHES, GET_LAUNCHES_SEARCH } from "../utils/queries";
+import Search from "./components/Search";
+import { useEffect, useState } from "react";
+import LaunchCards from "./components/LaunchCards";
+import { useLazyQuery } from "@apollo/client";
+import NewsComponent from "./components/News/index";
+import { Launch, News } from "./../utils/typings";
 
-export default function Home(props: any) {
+export default function Home({
+  launchesPast,
+  latestNews,
+}: {
+  launchesPast: Launch[];
+  latestNews: News[];
+}) {
+  const [search, setSearch] = useState<string>();
+  const [getLaunches, { loading, data }] = useLazyQuery(GET_LAUNCHES_SEARCH);
+
+  const handleSearch = (searched: string) => {
+    setSearch(searched);
+  };
+
+  useEffect(() => {
+    getLaunches({ variables: { search } });
+  }, [getLaunches, search]);
+
   return (
-    <div className={styles.container}>
-      {props.data.map((launch: any) => (
-        <div key={launch.mission_name}>
-          <LaunchCard
-            missionName={launch.mission_name}
-            details={launch.details}
-            imgs={launch.links.flickr_images}
-            date={launch.launch_date_local}
-          />
-        </div>
-      ))}
-    </div>
+    <>
+      <NewsComponent latestNews={latestNews} />
+      <Search onSearch={handleSearch} />
+      <LaunchCards
+        launches={data?.launchesPast || launchesPast}
+        loading={loading}
+      />
+    </>
   );
 }
 
@@ -24,10 +41,15 @@ export async function getServerSideProps() {
   const { data } = await client.query({
     query: GET_LAUNCHES,
   });
+  const { SERVER = "http://localhost:3000" } = process.env;
+  const latestNews = await fetch(`${SERVER}/api/latestNews`).then((res) =>
+    res.json()
+  );
 
   return {
     props: {
-      data: data.launchesPast,
+      launchesPast: data.launchesPast,
+      latestNews,
     },
   };
 }

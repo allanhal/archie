@@ -1,0 +1,12 @@
+.cards {
+  display: grid;
+  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, auto));
+  margin: 30px;
+}
+
+.message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

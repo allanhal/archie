@@ -1,0 +1,16 @@
+.search {
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input {
+  width: 30% !important;
+}
+
+@media screen and (max-width: 800px) {
+  .input {
+    width: 100% !important;
+  }
+}
