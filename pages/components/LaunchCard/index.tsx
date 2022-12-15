@@ -49,7 +49,7 @@ export default function LaunchCard({
         <Stack spacing="5">
           <Box>
             <Heading size="sm">{missionName}</Heading>
-            <Text>{format(parseISO(date), `MMMMMMM dd, yyyy`)}</Text>
+            {date && <Text>{format(parseISO(date), `MMMMMMM dd, yyyy`)}</Text>}
           </Box>
           <Text noOfLines={5}>
             {details || "No further information provided"}

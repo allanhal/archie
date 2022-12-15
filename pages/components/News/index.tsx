@@ -13,10 +13,11 @@ export default function NewsComponent({ latestNews }: { latestNews: News[] }) {
         latestNews
           ?.map(
             (news: News) =>
-              `${news.title} (${format(
-                parseISO(news.event_date_utc),
-                `MMMMMMM dd, yyyy`
-              )})`
+              `${news.title} (${
+                news?.event_date_utc
+                  ? format(parseISO(news?.event_date_utc), `MMMMMMM dd, yyyy`)
+                  : ""
+              })`
           )
           .join(" / ")
     );

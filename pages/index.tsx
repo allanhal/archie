@@ -41,8 +41,8 @@ export async function getServerSideProps() {
   const { data } = await client.query({
     query: GET_LAUNCHES,
   });
-  const { SERVER = "http://localhost:3000" } = process.env;
-  const latestNews = await fetch(`${SERVER}/api/latestNews`).then((res) =>
+  const { VERCEL_URL = "http://localhost:3000" } = process.env;
+  const latestNews = await fetch(`${VERCEL_URL}/api/latestNews`).then((res) =>
     res.json()
   );
 
