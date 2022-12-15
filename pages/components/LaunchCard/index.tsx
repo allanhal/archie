@@ -39,7 +39,7 @@ export default function LaunchCard({
   return (
     <Card maxW="sm" className={styles.card}>
       <Image
-        boxSize="300px"
+        boxSize="100%"
         objectFit="cover"
         src={img || "/spacex-black.jpg"}
         alt="Image from the mission"

@@ -12,8 +12,8 @@ Requirements:
       Using create-next-app is fine
 - [x] Should use typescript
 - [x] Use SpaceX’s graphql api to query the data required to build the exercise
-- [ ] The final result of this should be stored in a git repository and shared with Archie via
-      email
+- [x] The final result of this should be stored in a git repository and shared with Archie via
+      email - https://github.com/allanhal/archie
 
 Stretch Ideas:
 
@@ -24,7 +24,7 @@ Stretch Ideas:
       you didn’t use this method - Used to fetch the latest news about Spacex (using a REST API)
 - [x] Use apollo graphql to establish a connection to the endpoint
 - [x] Make it mobile responsive
-- [ ] Deploy to free hosting such as Vercel/Netlify and send the link at the time of
-      submission
+- [x] Deploy to free hosting such as Vercel/Netlify and send the link at the time of
+      submission - https://archie-allanhal.vercel.app/
 - [x] Feel free to also implement features that you think we’d find interesting on top of the
       requirements - Latest news on the bottom
