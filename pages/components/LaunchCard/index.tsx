@@ -20,6 +20,8 @@ interface Props {
   date: string;
   details: string;
   link: string;
+  favorites: string[];
+  setFavorites: (favorites: string[]) => void;
 }
 
 export default function LaunchCard({
@@ -28,6 +30,8 @@ export default function LaunchCard({
   date,
   details,
   link,
+  favorites,
+  setFavorites,
 }: Props) {
   const [img, setImg] = useState<string>("");
   useEffect(() => {
@@ -48,6 +52,19 @@ export default function LaunchCard({
       <CardBody>
         <Stack spacing="5">
           <Box>
+            <input
+              type="checkbox"
+              checked={favorites.includes(missionName)}
+              onChange={() => {
+                if (favorites.includes(missionName)) {
+                  setFavorites(
+                    favorites.filter((favorite) => missionName !== favorite)
+                  );
+                } else {
+                  setFavorites([...favorites, missionName]);
+                }
+              }}
+            />
             <Heading size="sm">{missionName}</Heading>
             {date && <Text>{format(parseISO(date), `MMMMMMM dd, yyyy`)}</Text>}
           </Box>
